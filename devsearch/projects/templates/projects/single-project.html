@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Project</title>
+</head>
+<body>
+    {% extends 'main.html' %}
+    
+    {% block content %}
+
+    *** Single-Project ***<br><br>
+    <i><b>Project.No: {{id}}</b></i><br>
+    <u>Project.Title: {{title}}</u><br>
+    Description: {{description}}<br>
+
+    {% endblock content %}
+</body>
+</html>
