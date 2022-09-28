@@ -25,7 +25,8 @@
     <hr>
         <ol>
             {% for project in projects %}
-                <li>project-title: {{project.title}}</li>
+                <!-- <li>project-title:<a href="project/{{project.id}}"> {{project.title}}</a></li> -->
+                <li>project-title:<a href="{% url 'project' project.id %}"> {{project.title}}</a></li>
                     project-description: {{project.description}}
             {% endfor %}
         </ol>
