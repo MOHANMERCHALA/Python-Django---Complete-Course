@@ -35,6 +35,3 @@ def project(request,pk):
             project_obj=single_project
 
     return render(request,'projects/single-project.html',project_obj)
-
-
-
