@@ -23,13 +23,33 @@
         and more recently with desktop publishing software like Aldus PageMaker including <br>
         versions of Lorem Ipsum.</p>
     <hr>
-        <ol>
+        <!--<ol> 
             {% for project in projects %}
-                <!-- <li>project-title:<a href="project/{{project.id}}"> {{project.title}}</a></li> -->
+                <!-- <li>project-title:<a href="project/{{project.id}}"> {{project.title}}</a></li> 
                 <li>project-title:<a href="{% url 'project' project.id %}"> {{project.title}}</a></li>
                     project-description: {{project.description}}
             {% endfor %}
-        </ol>
+        </ol>-->
+        <table>
+            <tr>
+                <th> Project Title </th>
+                <th> Description </th>
+                <th> Positive votes </th>
+                <th> Vote Ratio </th>   
+                <th> Created on </th>   
+                <th> </th>          
+            </tr>
+            {% for project in projects %}
+            <tr>
+                <td> {{project.title}} </td>                
+                <td> {{project.description}} </td>
+                <td> {{project.vote_total}} </td>
+                <td> {{project.vote_ratio}} </td>
+                <td> {{project.created}} </td>
+                <td> <a href="{% url 'project' project.id %}">View More</a></td>
+            </tr>
+            {% endfor %}
+        </table>
     {% endblock content %}
 </body>
 </html>

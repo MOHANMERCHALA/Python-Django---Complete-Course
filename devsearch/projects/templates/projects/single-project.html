@@ -12,9 +12,15 @@
     {% block content %}
 
     *** Single-Project ***<br><br>
-    <i><b>Project.No: {{id}}</b></i><br>
-    <u>Project.Title: {{title}}</u><br>
-    Description: {{description}}<br>
+    <!--<i><b>Project.No: {{project_obj.id}}</b></i><br>-->
+    <u>Project.Title: {{project_obj.title}}</u><br>
+    <hr>
+    {% for tag in project_obj.tags.all %}
+        <!-- <span style="border:1 px solid black;">{{tag}}</span><br> -->
+        <span style="border: 3px solid blue">{{tag}}</span>
+    {% endfor %}
+    <br><br>
+    Description: {{project_obj.description}}<br>
 
     {% endblock content %}
 </body>
