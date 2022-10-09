@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Project, Tag
+from .forms import ProjectForm
 # Create your views here.
 #static url call response
-projectList=[
+"""projectList=[
     {
         'id':'1',
         'title':"Ecommerce Website",
@@ -19,7 +20,7 @@ projectList=[
         'title':'Social Network',
         'description':'Awesome open source project I am still working on'
     }
-]
+]"""
 def projects(request):
     #return HttpResponse('Here are the projects!')
     """page='projects'
@@ -38,3 +39,54 @@ def project(request,pk):
     project_obj=Project.objects.get(id=pk)
     tags=project_obj.tags.all()
     return render(request,'projects/single-project.html',{'project_obj':project_obj,'tags':tags})
+
+#for creating the new project
+def create_project(request):
+    form=ProjectForm()
+
+    if request.method== 'POST':
+        #just printing the fields entered by the user
+        #print(request.POST) 
+        # add the form data into the database and after submit redirect to the project page display the project
+        form=ProjectForm(request.POST)
+
+        #check all the fields are entered (validated)
+        if form.is_valid():
+            # save the values into the db
+            form.save()
+            #redirect to the project page
+            return redirect('projects')          
+            
+    context={'form':form}
+    return render(request,'projects/project_form.html',context)
+
+#for modify/update the already existing project
+def update_project(request,pk):
+
+    project=Project.objects.get(id=pk)
+    form=ProjectForm(instance=project)
+
+    if request.method== 'POST':
+        #just printing the fields entered by the user
+        #print(request.POST) 
+        # add the form data into the database and after submit redirect to the project page display the project
+        form=ProjectForm(request.POST,instance=project)
+
+        #check all the fields are entered (validated)
+        if form.is_valid():
+            # save the values into the db
+            form.save()
+            #redirect to the project page
+            return redirect('projects')          
+            
+    context={'form':form}
+    return render(request,'projects/project_form.html',context)
+
+def delete_project(request,pk):
+    project=Project.objects.get(id=pk)
+    if request.method== 'POST':
+        project.delete()
+        return redirect('projects')
+    
+    context={'object':project}
+    return render(request,'projects/delete_project.html',context)
