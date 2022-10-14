@@ -10,8 +10,10 @@
     {% extends 'main.html' %}
     
     {% block content %}
-
+    
     *** Single-Project ***<br><br>
+    <img style="max-width:500px;" src="{{ project_obj.featured_image.url }}"><br>
+    
     <!--<i><b>Project.No: {{project_obj.id}}</b></i><br>-->
     <u>Project.Title: {{project_obj.title}}</u><br>
     <hr>

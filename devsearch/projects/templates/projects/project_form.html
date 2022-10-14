@@ -1,9 +1,9 @@
--pj m{% extends 'main.html' %}
+{% extends 'main.html' %}
 {% block content %}
 
 <h1> Project form</h1>
 
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- {{form}} -->
     {{form.as_p}} 

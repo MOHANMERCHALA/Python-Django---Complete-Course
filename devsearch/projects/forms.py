@@ -8,4 +8,4 @@ class ProjectForm(ModelForm):
         #fields='__all__'
 
         # To show only the specific fields
-        fields = ['title','description','demo_link','source_link','tags']
+        fields = ['title','description','featured_image','demo_link','source_link','tags']

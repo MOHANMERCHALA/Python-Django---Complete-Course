@@ -11,6 +11,9 @@ class Project(models.Model):
     # Set null for allowing to create null in db and blank is allowing to submit the post request of form even it is blank
     # Textfield for larger purpose
     description = models.TextField(null=True,blank=True)
+
+    #Adding the featured image
+    featured_image=models.ImageField(null=True,blank=True,default="default.jpg")
     demo_link = models.CharField(max_length=2000,null=True,blank=True)
     source_link = models.CharField(max_length=2000,null=True,blank=True)
 

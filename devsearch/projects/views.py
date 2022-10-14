@@ -48,7 +48,7 @@ def create_project(request):
         #just printing the fields entered by the user
         #print(request.POST) 
         # add the form data into the database and after submit redirect to the project page display the project
-        form=ProjectForm(request.POST)
+        form=ProjectForm(request.POST,request.FILES)
 
         #check all the fields are entered (validated)
         if form.is_valid():
@@ -70,7 +70,7 @@ def update_project(request,pk):
         #just printing the fields entered by the user
         #print(request.POST) 
         # add the form data into the database and after submit redirect to the project page display the project
-        form=ProjectForm(request.POST,instance=project)
+        form=ProjectForm(request.POST,request.FILES,instance=project)
 
         #check all the fields are entered (validated)
         if form.is_valid():
